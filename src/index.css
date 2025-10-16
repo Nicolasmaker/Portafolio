@@ -1,5 +1,6 @@
 /* Paleta de colores estilo GitHub - Tema Claro */
-:root {
+:root,
+[data-theme="light"] {
   --github-bg: #ffffff;
   --github-bg-secondary: #f6f8fa;
   --github-bg-tertiary: #f1f3f4;
@@ -16,11 +17,36 @@
   --github-blue: #0969da;
 }
 
+/* Paleta de colores estilo GitHub - Tema Oscuro */
+[data-theme="dark"] {
+  --github-bg: #0d1117;
+  --github-bg-secondary: #161b22;
+  --github-bg-tertiary: #21262d;
+  --github-border: #30363d;
+  --github-text: #e6edf3;
+  --github-text-secondary: #7d8590;
+  --github-accent: #3fb950;
+  --github-accent-emphasis: #2ea043;
+  --github-danger: #f85149;
+  --github-attention: #d29922;
+  --github-done: #3fb950;
+  --github-sponsors: #db61a2;
+  --github-white: #f0f6fc;
+  --github-blue: #58a6ff;
+}
+
 /* Estilos globales responsivos */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Clases para transiciones suaves de tema */
+.theme-light,
+.theme-dark {
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -42,6 +68,74 @@ body {
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Profile images enhancements */
+.profile-image {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1) contrast(1.05);
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1) contrast(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, var(--github-accent), var(--github-blue));
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover::after {
+  opacity: 0.1;
+}
+
+/* About page image specific styles */
+.about-image-container .image-container::after {
+  border-radius: 15px;
+}
+
+/* Dark theme image adjustments */
+[data-theme="dark"] .profile-image {
+  border-color: var(--github-blue) !important;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+[data-theme="dark"] .image-container::after {
+  background: linear-gradient(45deg, var(--github-blue), var(--github-accent));
+}
+
+[data-theme="dark"] .profile-image:hover {
+  filter: brightness(1.2) contrast(1.15);
+}
+
+/* Responsive image adjustments */
+@media (max-width: 768px) {
+  .profile-image {
+    max-width: 250px !important;
+  }
+  
+  .image-container::after {
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+  }
 }
 
 /* Texto responsivo */
@@ -307,6 +401,62 @@ h1, .display-1, .display-2, .display-3, .display-4, .display-5 {
   color: var(--github-text-secondary);
 }
 
+/* Estilos específicos para tema oscuro */
+[data-theme="dark"] {
+  /* Cards en tema oscuro */
+  .card {
+    background-color: var(--github-bg-secondary) !important;
+    border-color: var(--github-border) !important;
+    color: var(--github-text) !important;
+  }
+
+  /* Navbar en tema oscuro */
+  .navbar-light {
+    background-color: var(--github-bg) !important;
+    border-bottom-color: var(--github-border) !important;
+  }
+
+  /* Buttons en tema oscuro */
+  .btn-primary {
+    background-color: var(--github-blue) !important;
+    border-color: var(--github-blue) !important;
+  }
+  
+  .btn-outline-primary {
+    color: var(--github-blue) !important;
+    border-color: var(--github-blue) !important;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: var(--github-blue) !important;
+    border-color: var(--github-blue) !important;
+  }
+
+  /* Form controls en tema oscuro */
+  .form-control {
+    background-color: var(--github-bg-secondary) !important;
+    border-color: var(--github-border) !important;
+    color: var(--github-text) !important;
+  }
+  
+  .form-control:focus {
+    background-color: var(--github-bg-secondary) !important;
+    border-color: var(--github-blue) !important;
+    color: var(--github-text) !important;
+    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+  }
+
+  /* Progress bars en tema oscuro */
+  .progress {
+    background-color: var(--github-bg-tertiary) !important;
+  }
+
+  /* Text colors */
+  .text-muted {
+    color: var(--github-text-secondary) !important;
+  }
+}
+
 /* Animaciones suaves */
 .fade-in {
   animation: fadeIn 0.6s ease-in;
@@ -315,6 +465,147 @@ h1, .display-1, .display-2, .display-3, .display-4, .display-5 {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Theme toggle enhanced styles */
+.theme-toggle {
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.theme-toggle:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.3);
+}
+
+/* Divider for theme toggle */
+.theme-toggle-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--github-border);
+  opacity: 0.6;
+}
+
+/* Enhanced icon animations */
+.theme-icon-wrapper {
+  position: relative;
+}
+
+.theme-icon-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.theme-toggle:hover .theme-icon-wrapper::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Dark theme specific enhancements */
+[data-theme="dark"] .theme-toggle {
+  background-color: rgba(240, 246, 252, 0.08) !important;
+  border-color: rgba(240, 246, 252, 0.16) !important;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(240, 246, 252, 0.12) !important;
+  border-color: rgba(240, 246, 252, 0.24) !important;
+}
+
+[data-theme="dark"] .theme-toggle-divider {
+  background-color: rgba(240, 246, 252, 0.16);
+}
+
+/* Light theme specific enhancements */
+[data-theme="light"] .theme-toggle {
+  background-color: rgba(13, 17, 23, 0.06) !important;
+  border-color: rgba(13, 17, 23, 0.12) !important;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background-color: rgba(13, 17, 23, 0.08) !important;
+  border-color: rgba(13, 17, 23, 0.18) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .theme-toggle {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  
+  .theme-toggle i {
+    font-size: 16px !important;
+  }
+}
+
+/* Improved focus states for accessibility */
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--github-accent-fg);
+  outline-offset: 2px;
+}
+
+/* Smooth state transitions */
+.theme-toggle,
+.theme-toggle * {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CTA Button enhancements */
+.btn-primary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(9, 105, 218, 0.3) !important;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(9, 105, 218, 0.2) !important;
+}
+
+/* Dark theme button adjustments */
+[data-theme="dark"] .btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3) !important;
+}
+
+[data-theme="dark"] .btn-primary:active {
+  box-shadow: 0 2px 4px rgba(88, 166, 255, 0.2) !important;
+}
+
+/* Loading state for theme switching */
+.theme-switching .theme-toggle {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.theme-switching .theme-toggle .theme-icon-wrapper {
+  animation: spin 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Scroll suave */

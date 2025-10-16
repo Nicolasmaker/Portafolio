@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 function Header() {
   const [expanded, setExpanded] = useState(false);
@@ -41,6 +42,8 @@ function Header() {
         backdropFilter: scrolled ? 'blur(10px)' : 'none',
         backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : '#ffffff'
       }}
+      role="navigation"
+      aria-label="Navegación principal"
     >
       <Container fluid>
         <Navbar.Brand 
@@ -52,6 +55,11 @@ function Header() {
         >
           Mi Portafolio
         </Navbar.Brand>
+        
+        {/* Theme Toggle para móvil - visible solo en pantallas pequeñas */}
+        <div className="d-flex align-items-center d-lg-none">
+          <ThemeToggle variant="header" className="me-2" />
+        </div>
         
         <Navbar.Toggle 
           aria-controls="basic-navbar-nav"
@@ -93,6 +101,12 @@ function Header() {
               Contacto
             </Nav.Link>
           </Nav>
+          
+          {/* Theme Toggle - Solo desktop, separado del nav para mejor control */}
+          <div className="d-none d-lg-flex align-items-center ms-auto">
+            <div className="theme-toggle-divider me-3"></div>
+            <ThemeToggle variant="header" />
+          </div>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -1,6 +1,8 @@
 // src/views/ProjectsView.jsx
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, Badge } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import OptimizedImage from '../components/OptimizedImage';
 
 // Datos de mis proyectos
 const projectsData = [
@@ -101,12 +103,11 @@ export default function ProjectsView() {
                 >
                   <Card className="card-responsive shadow border-0 w-100">
                     <div style={{ height: '200px', overflow: 'hidden', backgroundColor: '#f8f9fa' }}>
-                      <Card.Img 
-                        variant="top" 
+                      <OptimizedImage
                         src={project.imgUrl}
                         alt={project.title}
+                        className="w-100 h-100"
                         style={{
-                          height: '100%',
                           objectFit: project.imgUrl.includes('Gemini_Generated_Image_') ? 'contain' : 'cover',
                           objectPosition: 'center',
                           transition: 'transform 0.3s ease',
@@ -192,12 +193,18 @@ export default function ProjectsView() {
                   ¡Hablemos sobre tu próximo proyecto!
                 </p>
                 <Button 
-                  as="a" 
-                  href="#/contact" 
+                  as={Link}
+                  to="/contact"
                   variant="primary" 
                   size="lg"
-                  className="px-4"
+                  className="px-4 py-2"
+                  style={{
+                    textDecoration: 'none',
+                    transition: 'all 0.3s ease',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                  }}
                 >
+                  <i className="fas fa-paper-plane me-2"></i>
                   Empecemos a trabajar juntos
                 </Button>
               </Card.Body>

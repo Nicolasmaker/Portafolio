@@ -1,0 +1,12 @@
+{
+  "name": "analyze-bundle",
+  "version": "1.0.0",
+  "description": "Herramienta para analizar el tamaño del bundle",
+  "type": "module",
+  "scripts": {
+    "analyze": "npm run build && npx vite-bundle-analyzer dist"
+  },
+  "dependencies": {
+    "vite-bundle-analyzer": "^0.7.0"
+  }
+}

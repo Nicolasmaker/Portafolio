@@ -1,8 +1,30 @@
-/* Estilos específicos de la aplicación - Tema GitHub Claro */
+/* Estilos específicos de la aplicación - Soporte para múltiples temas */
 
 /* Transiciones suaves para todos los elementos */
 * {
   transition: all 0.3s ease;
+}
+
+/* Soporte para tema oscuro */
+[data-theme="dark"] {
+  .navbar {
+    background-color: rgba(13, 17, 23, 0.95) !important;
+    border-bottom: 1px solid var(--github-border) !important;
+  }
+  
+  .hero-section {
+    background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%) !important;
+  }
+  
+  .technology-badge {
+    background-color: var(--github-bg-secondary) !important;
+    color: var(--github-text) !important;
+    border: 1px solid var(--github-border) !important;
+  }
+  
+  .stats-number {
+    color: var(--github-blue) !important;
+  }
 }
 
 /* Mejoras para el navbar */

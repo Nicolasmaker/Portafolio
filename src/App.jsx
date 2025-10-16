@@ -1,43 +1,43 @@
 // src/App.jsx
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Context
+import { ThemeProvider } from './context/ThemeContext';
+
+// Components
 import Header from './components/Header';
-import HomeView from './views/HomeView';
-import AboutView from './views/AboutView';
-import ProjectsView from './views/ProjectsView';
-import ContactView from './views/ContactView';
+import Loading from './components/Loading';
+import ErrorBoundary from './components/ErrorBoundary';
+
+// Lazy loaded views
+const HomeView = React.lazy(() => import('./views/HomeView'));
+const AboutView = React.lazy(() => import('./views/AboutView'));
+const ProjectsView = React.lazy(() => import('./views/ProjectsView'));
+const ContactView = React.lazy(() => import('./views/ContactView'));
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="d-flex flex-column min-vh-100">
-        <Header />
-        
-        <main className="flex-grow-1">
-          <Routes>
-            <Route path="/" element={<HomeView />} />
-            <Route path="/about" element={<AboutView />} />
-            <Route path="/projects" element={<ProjectsView />} />
-            <Route path="/contact" element={<ContactView />} />
-          </Routes>
-        </main>
-        
-        {/* Footer responsivo */}
-        <footer className="footer-responsive text-center">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-12">
-                <p className="mb-1 text-responsive">
-                  © 2025 <strong>Nicolás Pérez</strong>. Todos los derechos reservados.
-                </p>
-                <p className="mb-0 small text-muted">
-                  Desarrollado con ❤️ usando React y Bootstrap
-                </p>
-              </div>
-            </div>
+    <ThemeProvider>
+      <ErrorBoundary>
+        <Router>
+          <div className="App">
+            <Header />
+            <main className="main-content">
+              <Suspense fallback={<Loading message="Cargando página..." />}>
+                <Routes>
+                  <Route path="/" element={<HomeView />} />
+                  <Route path="/about" element={<AboutView />} />
+                  <Route path="/projects" element={<ProjectsView />} />
+                  <Route path="/contact" element={<ContactView />} />
+                </Routes>
+              </Suspense>
+            </main>
           </div>
-        </footer>
-      </div>
-    </BrowserRouter>
+        </Router>
+      </ErrorBoundary>
+    </ThemeProvider>
   );
 }
 

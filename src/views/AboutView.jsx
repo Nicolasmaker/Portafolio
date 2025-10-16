@@ -1,6 +1,7 @@
 // src/views/AboutView.jsx
 import React from 'react';
 import { Container, Row, Col, Image, Card, ProgressBar } from 'react-bootstrap';
+import OptimizedImage from '../components/OptimizedImage';
 
 export default function AboutView() { 
   const skills = [
@@ -25,17 +26,18 @@ export default function AboutView() {
                   
                   {/* Columna de la imagen */}
                   <Col xs={12} md={4} className="text-center mb-4 mb-md-0">
-                    <div className="image-container">
-                      <Image 
-                        src="https://via.placeholder.com/300x300/28a745/ffffff?text=About+Me" 
-                        rounded 
-                        fluid 
-                        className="shadow"
+                    <div className="image-container about-image-container">
+                      <OptimizedImage
+                        src="/images/Gemini_Generated_Image_ke5xlyke5xlyke5x.png" 
+                        alt="Nicolás Pérez - Desarrollador Full Stack"
+                        className="shadow profile-image"
                         style={{
                           maxWidth: 'clamp(200px, 30vw, 300px)',
-                          border: '3px solid #28a745'
+                          border: '3px solid var(--github-accent)',
+                          objectFit: 'cover',
+                          aspectRatio: '4/5',
+                          borderRadius: '12px'
                         }}
-                        alt="Foto de perfil - Sobre mí"
                       />
                     </div>
                   </Col>

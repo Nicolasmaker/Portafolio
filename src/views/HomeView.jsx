@@ -2,10 +2,21 @@
 import React from 'react';
 import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
+import OptimizedImage from '../components/OptimizedImage';
 
 export default function HomeView() { 
+  const { isDark } = useTheme();
+  
   return (
-    <div className="main-container">
+    <div 
+      className="main-container"
+      style={{
+        background: isDark 
+          ? 'linear-gradient(135deg, #0d1117 0%, #161b22 50%, #21262d 100%)'
+          : 'linear-gradient(135deg, #f6f8fa 0%, #ffffff 50%, #f1f3f4 100%)'
+      }}
+    >
       <Container fluid className="section-padding fade-in">
         <Row className="justify-content-center align-items-center min-vh-100">
           
@@ -69,16 +80,16 @@ export default function HomeView() {
             className="text-center mb-4 mb-md-0 order-1 order-md-2"
           >
             <div className="image-container">
-              <Image 
-                src="https://via.placeholder.com/400x400/007bff/ffffff?text=Tu+Foto" 
-                roundedCircle 
-                fluid
-                className="profile-image shadow"
+              <OptimizedImage
+                src="/images/Gemini_Generated_Image_ke5xlyke5xlyke5x.png" 
+                alt="Nicolás Pérez - Desarrollador Full Stack"
+                className="profile-image shadow rounded-circle"
                 style={{
                   maxWidth: 'clamp(200px, 40vw, 400px)',
-                  border: '4px solid #007bff'
+                  border: '4px solid var(--github-accent)',
+                  objectFit: 'cover',
+                  aspectRatio: '1/1'
                 }}
-                alt="Foto de perfil"
               />
             </div>
           </Col>

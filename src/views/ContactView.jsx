@@ -1,5 +1,5 @@
 // src/views/ContactView.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Form, Button, Card, Alert } from 'react-bootstrap';
 
 export default function ContactView() {
@@ -13,6 +13,23 @@ export default function ContactView() {
 
   const [showAlert, setShowAlert] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Scroll suave al formulario cuando viene desde proyectos
+  useEffect(() => {
+    const scrollToForm = () => {
+      const formElement = document.getElementById('contact-form');
+      if (formElement) {
+        formElement.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    };
+
+    // Pequeño delay para asegurar que el componente esté montado
+    const timer = setTimeout(scrollToForm, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Función para manejar los cambios en los inputs
   const handleChange = (e) => {
@@ -108,8 +125,8 @@ export default function ContactView() {
                 <Card className="border-0 shadow">
                   <Card.Body className="padding-responsive">
                     <h3 
-                      className="mb-4"
-                      style={{ 
+                      className="text-center mb-4"
+                      style={{
                         fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
                         color: '#495057'
                       }}
@@ -117,7 +134,7 @@ export default function ContactView() {
                       Envíame un Mensaje
                     </h3>
                     
-                    <Form onSubmit={handleSubmit}>
+                    <Form id="contact-form" onSubmit={handleSubmit}>
                       <Row>
                         <Col xs={12} sm={6}>
                           <Form.Group className="mb-3" controlId="formGroupName">
