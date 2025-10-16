@@ -1,0 +1,345 @@
+/* Paleta de colores estilo GitHub - Tema Claro */
+:root {
+  --github-bg: #ffffff;
+  --github-bg-secondary: #f6f8fa;
+  --github-bg-tertiary: #f1f3f4;
+  --github-border: #d1d9e0;
+  --github-text: #24292f;
+  --github-text-secondary: #656d76;
+  --github-accent: #1f883d;
+  --github-accent-emphasis: #1a7f37;
+  --github-danger: #d1242f;
+  --github-attention: #bf8700;
+  --github-done: #1f883d;
+  --github-sponsors: #bf4b8a;
+  --github-white: #ffffff;
+  --github-blue: #0969da;
+}
+
+/* Estilos globales responsivos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden; /* Evita scroll horizontal */
+  background-color: var(--github-bg) !important;
+  color: var(--github-text) !important;
+}
+
+/* Contenedor principal responsivo */
+.main-container {
+  min-height: 100vh;
+  padding-top: 70px; /* Espacio para navbar fijo */
+  background-color: var(--github-bg);
+}
+
+/* Imágenes responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Texto responsivo */
+h1, .display-1, .display-2, .display-3, .display-4, .display-5 {
+  word-break: break-word;
+  color: var(--github-text) !important;
+}
+
+/* Elementos con estilo GitHub - Tema Claro */
+.card {
+  background-color: var(--github-white) !important;
+  border: 1px solid var(--github-border) !important;
+  color: var(--github-text) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+}
+
+.bg-light {
+  background-color: var(--github-bg-secondary) !important;
+  border: 1px solid var(--github-border) !important;
+}
+
+.text-muted {
+  color: var(--github-text-secondary) !important;
+}
+
+.text-primary {
+  color: var(--github-blue) !important;
+}
+
+.btn-primary {
+  background-color: var(--github-accent) !important;
+  border-color: var(--github-accent) !important;
+  color: var(--github-white) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--github-accent-emphasis) !important;
+  border-color: var(--github-accent-emphasis) !important;
+}
+
+.btn-outline-primary {
+  color: var(--github-accent) !important;
+  border-color: var(--github-border) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--github-accent) !important;
+  border-color: var(--github-accent) !important;
+  color: var(--github-white) !important;
+}
+
+.btn-outline-secondary {
+  color: var(--github-text-secondary) !important;
+  border-color: var(--github-border) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--github-bg-tertiary) !important;
+  border-color: var(--github-border) !important;
+  color: var(--github-text) !important;
+}
+
+/* Media queries para diferentes dispositivos */
+
+/* Móviles pequeños (320px - 576px) */
+@media (max-width: 575.98px) {
+  .display-4 {
+    font-size: 1.8rem !important;
+  }
+  
+  .lead {
+    font-size: 1rem !important;
+  }
+  
+  /* Padding reducido en móviles */
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  /* Botones más pequeños */
+  .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Cards más compactas */
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  /* Formularios más compactos */
+  .form-control {
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+}
+
+/* Tablets (576px - 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .display-4 {
+    font-size: 2.2rem !important;
+  }
+}
+
+/* Tablets grandes y laptops pequeñas (768px - 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .display-4 {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Laptops y desktops (992px+) */
+@media (min-width: 992px) {
+  .display-4 {
+    font-size: 3rem !important;
+  }
+}
+
+/* Clases utilitarias responsivas */
+.text-responsive {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+.padding-responsive {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.margin-responsive {
+  margin: clamp(1rem, 3vw, 2rem) 0;
+}
+
+/* Mejoras para el navbar */
+.navbar-brand {
+  font-weight: bold;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important;
+  color: var(--github-text) !important;
+}
+
+.navbar-light {
+  background-color: var(--github-white) !important;
+  border-bottom: 1px solid var(--github-border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--github-text-secondary) !important;
+  font-weight: 500;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: var(--github-text) !important;
+}
+
+.navbar-light .navbar-nav .nav-link.fw-bold {
+  color: var(--github-text) !important;
+}
+
+/* Formularios estilo GitHub - Tema Claro */
+.form-control {
+  background-color: var(--github-white) !important;
+  border: 1px solid var(--github-border) !important;
+  color: var(--github-text) !important;
+}
+
+.form-control:focus {
+  background-color: var(--github-white) !important;
+  border-color: var(--github-blue) !important;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15) !important;
+  color: var(--github-text) !important;
+}
+
+.form-control::placeholder {
+  color: var(--github-text-secondary) !important;
+}
+
+.form-label {
+  color: var(--github-text) !important;
+  font-weight: 600;
+}
+
+/* Badges estilo GitHub - Tema Claro */
+.badge {
+  background-color: var(--github-bg-secondary) !important;
+  color: var(--github-text) !important;
+  border: 1px solid var(--github-border) !important;
+}
+
+.bg-success {
+  background-color: var(--github-accent) !important;
+  color: var(--github-white) !important;
+}
+
+.bg-warning {
+  background-color: var(--github-attention) !important;
+  color: var(--github-white) !important;
+}
+
+.bg-info {
+  background-color: var(--github-blue) !important;
+  color: var(--github-white) !important;
+}
+
+/* Progress bars estilo GitHub - Tema Claro */
+.progress {
+  background-color: var(--github-bg-secondary) !important;
+  border: 1px solid var(--github-border) !important;
+}
+
+.progress-bar {
+  background-color: var(--github-accent) !important;
+}
+
+.progress-bar.bg-success {
+  background-color: var(--github-accent) !important;
+}
+
+.progress-bar.bg-warning {
+  background-color: var(--github-attention) !important;
+}
+
+.progress-bar.bg-info {
+  background-color: var(--github-blue) !important;
+}
+
+/* Espaciado consistente */
+.section-padding {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+/* Cards responsivas */
+.card-responsive {
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.card-responsive:hover {
+  transform: translateY(-5px);
+}
+
+/* Imagen de perfil responsiva */
+.profile-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Contenedor de imagen centrado */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Footer responsive - Tema Claro */
+.footer-responsive {
+  margin-top: auto;
+  padding: 1rem 0;
+  background-color: var(--github-bg-secondary);
+  border-top: 1px solid var(--github-border);
+  color: var(--github-text-secondary);
+}
+
+/* Animaciones suaves */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejoras para accesibilidad */
+.btn:focus,
+.form-control:focus,
+.nav-link:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Ocultar elementos en móviles si es necesario */
+@media (max-width: 767.98px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Mostrar solo en móviles */
+@media (min-width: 768px) {
+  .show-mobile-only {
+    display: none !important;
+  }
+}

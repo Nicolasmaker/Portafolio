@@ -1,0 +1,286 @@
+/* Estilos específicos de la aplicación - Tema GitHub Claro */
+
+/* Transiciones suaves para todos los elementos */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Mejoras para el navbar */
+.navbar {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  border: 2px solid var(--github-blue);
+}
+
+.navbar-toggler {
+  border-color: var(--github-border);
+  color: var(--github-text);
+}
+
+/* Efectos hover para cards - Tema Claro */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+  border-color: var(--github-blue) !important;
+}
+
+/* Botones más atractivos */
+.btn {
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Formularios mejorados estilo GitHub - Tema Claro */
+.form-control:focus {
+  border-color: var(--github-blue);
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15);
+}
+
+/* Animaciones de entrada */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Clases de utilidad para animaciones */
+.animate-slide-up {
+  animation: slideInUp 0.8s ease-out;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* Mejoras para el progreso bar */
+.progress {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  border-radius: 4px;
+}
+
+/* Estilos para badges */
+.badge {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Mejoras de accesibilidad */
+.btn:focus-visible,
+.form-control:focus-visible,
+.nav-link:focus-visible {
+  outline: 3px solid var(--github-blue);
+  outline-offset: 2px;
+}
+
+/* Skip to content link para accesibilidad */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--github-accent);
+  color: var(--github-white);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+  .card:hover {
+    transform: none;
+  }
+  
+  .btn:hover {
+    transform: none;
+  }
+}
+
+/* Optimización para pantallas de alta densidad */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .profile-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Mejoras para modo oscuro (si se implementa en el futuro) */
+@media (prefers-color-scheme: dark) {
+  .bg-light {
+    background-color: #343a40 !important;
+    color: #ffffff;
+  }
+  
+  .text-muted {
+    color: #adb5bd !important;
+  }
+}
+
+/* Estilo para loading states */
+.loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading * {
+  pointer-events: none;
+}
+
+/* Mejoras para el footer */
+.footer-responsive {
+  border-top: 1px solid var(--github-border);
+  background: var(--github-bg-secondary);
+}
+
+/* Efectos parallax suave */
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Desactivar parallax en dispositivos móviles */
+@media (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+/* Estilos adicionales para tema GitHub - Tema Claro */
+.alert-success {
+  background-color: rgba(31, 136, 61, 0.1) !important;
+  border-color: var(--github-accent) !important;
+  color: var(--github-accent) !important;
+}
+
+/* Contenedores y secciones */
+.container-fluid {
+  background-color: var(--github-bg);
+}
+
+/* Enlaces */
+a {
+  color: var(--github-blue) !important;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--github-blue) !important;
+  text-decoration: underline;
+}
+
+/* Texto destacado */
+strong {
+  color: var(--github-text) !important;
+}
+
+/* Separadores */
+hr {
+  border-color: var(--github-border) !important;
+}
+
+/* GitHub-style shadows - Tema Claro */
+.shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23) !important;
+}
+
+/* Mejoras adicionales para tema claro */
+.text-secondary {
+  color: var(--github-text-secondary) !important;
+}
+
+.border {
+  border-color: var(--github-border) !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--github-bg-secondary) !important;
+  border-color: var(--github-border) !important;
+}
+
+/* Card headers y footers */
+.card-header {
+  background-color: var(--github-bg-secondary) !important;
+  border-bottom: 1px solid var(--github-border) !important;
+}
+
+.card-footer {
+  background-color: var(--github-bg-secondary) !important;
+  border-top: 1px solid var(--github-border) !important;
+}
+
+/* Lista de navegación */
+.nav-tabs {
+  border-bottom-color: var(--github-border) !important;
+}
+
+.nav-tabs .nav-link {
+  border-color: transparent !important;
+  color: var(--github-text-secondary) !important;
+}
+
+.nav-tabs .nav-link:hover {
+  border-color: var(--github-border) !important;
+  color: var(--github-text) !important;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--github-white) !important;
+  border-color: var(--github-border) var(--github-border) var(--github-white) !important;
+  color: var(--github-text) !important;
+}
