@@ -3,6 +3,12 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['src/tests/setup.vitest.js'],
+    globals: true,
+    css: true,
+  },
   
   // Configuración de build optimizada
   build: {
@@ -49,6 +55,11 @@ export default defineConfig({
       '@': '/src',
       '@components': '/src/components',
       '@views': '/src/views',
+      '@atoms': '/src/components/atoms',
+      '@molecules': '/src/components/molecules',
+      '@organisms': '/src/components/organisms',
+      '@templates': '/src/components/templates',
+      '@pages': '/src/pages',
       '@assets': '/src/assets',
     },
   },

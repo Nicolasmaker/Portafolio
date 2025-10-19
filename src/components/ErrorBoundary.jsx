@@ -8,19 +8,19 @@ class ErrorBoundary extends React.Component {
     this.state = { hasError: false, error: null, errorInfo: null };
   }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError() {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(_error, errorInfo) {
     this.setState({
-      error: error,
+      error: _error,
       errorInfo: errorInfo
     });
     
-    // Log error to console in development
-    if (process.env.NODE_ENV === 'development') {
-      console.error('ErrorBoundary caught an error:', error, errorInfo);
+    const isDev = typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development';
+    if (isDev) {
+      console.error('Error capturado por ErrorBoundary:', _error, errorInfo);
     }
   }
 
@@ -63,7 +63,7 @@ class ErrorBoundary extends React.Component {
                 </div>
               </Alert>
               
-              {process.env.NODE_ENV === 'development' && this.state.error && (
+              {typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'development' && this.state.error && (
                 <Alert variant="warning" className="mt-3">
                   <Alert.Heading>Información de Desarrollo</Alert.Heading>
                   <details>

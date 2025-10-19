@@ -7,34 +7,31 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ThemeProvider } from './context/ThemeContext';
 
 // Components
-import Header from './components/Header';
 import Loading from './components/Loading';
 import ErrorBoundary from './components/ErrorBoundary';
+import MainLayout from './components/templates/MainLayout';
 
-// Lazy loaded views
-const HomeView = React.lazy(() => import('./views/HomeView'));
-const AboutView = React.lazy(() => import('./views/AboutView'));
-const ProjectsView = React.lazy(() => import('./views/ProjectsView'));
-const ContactView = React.lazy(() => import('./views/ContactView'));
+// Lazy loaded pages (Atomic Design)
+const HomePage = React.lazy(() => import('./pages/Home'));
+const AboutPage = React.lazy(() => import('./pages/About'));
+const ProjectsPage = React.lazy(() => import('./pages/Projects'));
+const ContactPage = React.lazy(() => import('./pages/Contact'));
 
 function App() {
   return (
     <ThemeProvider>
       <ErrorBoundary>
         <Router>
-          <div className="App">
-            <Header />
-            <main className="main-content">
-              <Suspense fallback={<Loading message="Cargando página..." />}>
-                <Routes>
-                  <Route path="/" element={<HomeView />} />
-                  <Route path="/about" element={<AboutView />} />
-                  <Route path="/projects" element={<ProjectsView />} />
-                  <Route path="/contact" element={<ContactView />} />
-                </Routes>
-              </Suspense>
-            </main>
-          </div>
+          <MainLayout>
+            <Suspense fallback={<Loading message="Cargando página..." />}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+              </Routes>
+            </Suspense>
+          </MainLayout>
         </Router>
       </ErrorBoundary>
     </ThemeProvider>

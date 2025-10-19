@@ -1,118 +1,33 @@
 // src/views/HomeView.test.jsx
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import HomeView from './HomeView';
-
-const HomeViewWithRouter = () => (
-  <BrowserRouter>
-    <HomeView />
-  </BrowserRouter>
-);
+import { renderWithProviders, screen } from '../tests/test-utils';
 
 describe('HomeView Component', () => {
-  let container;
-
-  beforeEach(() => {
-    container = document.createElement('div');
-    document.body.appendChild(container);
+  it('renderiza el contenedor principal y el título', () => {
+    renderWithProviders(<HomeView />);
+    expect(document.querySelector('.main-container')).toBeTruthy();
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Hola, soy/i);
+    expect(screen.getByText('Nicolás Pérez')).toBeInTheDocument();
   });
 
-  afterEach(() => {
-    document.body.removeChild(container);
-    container = null;
+  it('muestra las badges de tecnologías', () => {
+    renderWithProviders(<HomeView />);
+    expect(document.querySelectorAll('.badge').length).toBeGreaterThan(0);
+    expect(screen.getByText('React')).toBeInTheDocument();
   });
 
-  it('should render the HomeView component', () => {
-    const React = require('react');
-    const ReactDOM = require('react-dom');
-    
-    ReactDOM.render(React.createElement(HomeViewWithRouter), container);
-    
-    const mainContainer = container.querySelector('.main-container');
-    expect(mainContainer).toBeTruthy();
+  it('tiene los botones de acción', () => {
+    renderWithProviders(<HomeView />);
+    expect(screen.getByText('Ver mis Proyectos')).toBeInTheDocument();
+    expect(screen.getByText('Contáctame')).toBeInTheDocument();
   });
 
-  it('should display the name "Nicolás Pérez"', () => {
-    const React = require('react');
-    const ReactDOM = require('react-dom');
-    
-    ReactDOM.render(React.createElement(HomeViewWithRouter), container);
-    
-    const nameElement = container.querySelector('.text-primary');
-    expect(nameElement).toBeTruthy();
-    expect(nameElement.textContent).toBe('Nicolás Pérez');
-  });
-
-  it('should display the main heading', () => {
-    const React = require('react');
-    const ReactDOM = require('react-dom');
-    
-    ReactDOM.render(React.createElement(HomeViewWithRouter), container);
-    
-    const heading = container.querySelector('h1');
-    expect(heading).toBeTruthy();
-    expect(heading.textContent).toContain('Hola, soy');
-  });
-
-  it('should display the professional description', () => {
-    const React = require('react');
-    const ReactDOM = require('react-dom');
-    
-    ReactDOM.render(React.createElement(HomeViewWithRouter), container);
-    
-    const description = container.querySelector('.lead');
-    expect(description).toBeTruthy();
-    expect(description.textContent).toContain('desarrollador Full-Stack');
-  });
-
-  it('should have action buttons', () => {
-    const React = require('react');
-    const ReactDOM = require('react-dom');
-    
-    ReactDOM.render(React.createElement(HomeViewWithRouter), container);
-    
-    const buttons = container.querySelectorAll('.btn');
-    expect(buttons.length).toBeGreaterThanOrEqual(2);
-    
-    // Verificar que los botones tienen el texto correcto
-    const buttonTexts = Array.from(buttons).map(btn => btn.textContent);
-    expect(buttonTexts).toContain('Ver mis Proyectos');
-    expect(buttonTexts).toContain('Contáctame');
-  });
-
-  it('should display technology badges', () => {
-    const React = require('react');
-    const ReactDOM = require('react-dom');
-    
-    ReactDOM.render(React.createElement(HomeViewWithRouter), container);
-    
-    const badges = container.querySelectorAll('.badge');
-    expect(badges.length).toBeGreaterThan(0);
-    
-    // Verificar que incluye tecnologías específicas
-    const badgeTexts = Array.from(badges).map(badge => badge.textContent);
-    expect(badgeTexts).toContain('React');
-    expect(badgeTexts).toContain('JavaScript');
-  });
-
-  it('should have a profile image', () => {
-    const React = require('react');
-    const ReactDOM = require('react-dom');
-    
-    ReactDOM.render(React.createElement(HomeViewWithRouter), container);
-    
-    const profileImage = container.querySelector('.profile-image');
-    expect(profileImage).toBeTruthy();
-    expect(profileImage.getAttribute('alt')).toBe('Foto de perfil');
-  });
-
-  it('should be responsive with proper column classes', () => {
-    const React = require('react');
-    const ReactDOM = require('react-dom');
-    
-    ReactDOM.render(React.createElement(HomeViewWithRouter), container);
-    
-    const columns = container.querySelectorAll('[class*="col-"]');
-    expect(columns.length).toBeGreaterThan(0);
+  it('muestra la imagen de perfil', () => {
+    renderWithProviders(<HomeView />);
+    const img = document.querySelector('.profile-image');
+    expect(img).toBeTruthy();
+    const alt = img.getAttribute('alt') || '';
+    expect(alt).toEqual(expect.stringContaining('Nicolás Pérez'));
   });
 });

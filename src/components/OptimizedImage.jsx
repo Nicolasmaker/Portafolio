@@ -25,7 +25,7 @@ const OptimizedImage = ({
   if (hasError) {
     return (
       <div 
-        className={`d-flex align-items-center justify-content-center bg-light text-muted ${className}`}
+        className={`d-flex align-items-center justify-content-center bg-light text-muted`}
         style={{ minHeight: '200px', ...props.style }}
         {...props}
       >
@@ -41,7 +41,7 @@ const OptimizedImage = ({
     <div className="position-relative">
       {isLoading && (
         <div 
-          className={`position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-light ${className}`}
+          className={`position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center bg-light optimized-image-overlay`}
           style={{ minHeight: '200px', zIndex: 1 }}
         >
           {placeholder || (
