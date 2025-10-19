@@ -1,7 +1,6 @@
 // src/App.jsx
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Context
 import { ThemeProvider } from './context/ThemeContext';

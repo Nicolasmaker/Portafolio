@@ -1,0 +1,637 @@
+/* Archivo movido desde src/index.css */
+/* Paleta de colores estilo GitHub - Tema Claro */
+:root,
+[data-theme="light"] {
+  --github-bg: #ffffff;
+  --github-bg-secondary: #f6f8fa;
+  --github-bg-tertiary: #f1f3f4;
+  --github-border: #d1d9e0;
+  --github-text: #24292f;
+  --github-text-secondary: #656d76;
+  --github-accent: #1f883d;
+  --github-accent-emphasis: #1a7f37;
+  --github-danger: #d1242f;
+  --github-attention: #bf8700;
+  --github-done: #1f883d;
+  --github-sponsors: #bf4b8a;
+  --github-white: #ffffff;
+  --github-blue: #0969da;
+}
+
+/* Paleta de colores estilo GitHub - Tema Oscuro */
+[data-theme="dark"] {
+  --github-bg: #0d1117;
+  --github-bg-secondary: #161b22;
+  --github-bg-tertiary: #21262d;
+  --github-border: #30363d;
+  --github-text: #e6edf3;
+  --github-text-secondary: #7d8590;
+  --github-accent: #3fb950;
+  --github-accent-emphasis: #2ea043;
+  --github-danger: #f85149;
+  --github-attention: #d29922;
+  --github-done: #3fb950;
+  --github-sponsors: #db61a2;
+  --github-white: #f0f6fc;
+  --github-blue: #58a6ff;
+}
+
+/* Estilos globales responsivos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Clases para transiciones suaves de tema */
+.theme-light,
+.theme-dark {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden; /* Evita scroll horizontal */
+  background-color: var(--github-bg) !important;
+  color: var(--github-text) !important;
+}
+
+/* Contenedor principal responsivo */
+.main-container {
+  min-height: 100vh;
+  padding-top: 70px; /* Espacio para navbar fijo */
+  background-color: var(--github-bg);
+}
+
+/* Imágenes responsivas */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Profile images enhancements */
+.profile-image {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(1) contrast(1.05);
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1) contrast(1.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.image-container::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, var(--github-accent), var(--github-blue));
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover::after {
+  opacity: 0.1;
+}
+
+/* About page image specific styles */
+.about-image-container .image-container::after {
+  border-radius: 15px;
+}
+
+/* Dark theme image adjustments */
+[data-theme="dark"] .profile-image {
+  border-color: var(--github-blue) !important;
+  filter: brightness(1.1) contrast(1.1);
+}
+
+[data-theme="dark"] .image-container::after {
+  background: linear-gradient(45deg, var(--github-blue), var(--github-accent));
+}
+
+[data-theme="dark"] .profile-image:hover {
+  filter: brightness(1.2) contrast(1.15);
+}
+
+/* Responsive image adjustments */
+@media (max-width: 768px) {
+  .profile-image {
+    max-width: 250px !important;
+  }
+  
+  .image-container::after {
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+  }
+}
+
+/* Texto responsivo */
+h1, .display-1, .display-2, .display-3, .display-4, .display-5 {
+  word-break: break-word;
+  color: var(--github-text) !important;
+}
+
+/* Elementos con estilo GitHub - Tema Claro */
+.card {
+  background-color: var(--github-white) !important;
+  border: 1px solid var(--github-border) !important;
+  color: var(--github-text) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+}
+
+.bg-light {
+  background-color: var(--github-bg-secondary) !important;
+  border: 1px solid var(--github-border) !important;
+}
+
+.text-muted {
+  color: var(--github-text-secondary) !important;
+}
+
+.text-primary {
+  color: var(--github-blue) !important;
+}
+
+.btn-primary {
+  background-color: var(--github-accent) !important;
+  border-color: var(--github-accent) !important;
+  color: var(--github-white) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--github-accent-emphasis) !important;
+  border-color: var(--github-accent-emphasis) !important;
+}
+
+.btn-outline-primary {
+  color: var(--github-accent) !important;
+  border-color: var(--github-border) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--github-accent) !important;
+  border-color: var(--github-accent) !important;
+  color: var(--github-white) !important;
+}
+
+.btn-outline-secondary {
+  color: var(--github-text-secondary) !important;
+  border-color: var(--github-border) !important;
+  background-color: transparent !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--github-bg-tertiary) !important;
+  border-color: var(--github-border) !important;
+  color: var(--github-text) !important;
+}
+
+/* Media queries para diferentes dispositivos */
+
+/* Móviles pequeños (320px - 576px) */
+@media (max-width: 575.98px) {
+  .display-4 {
+    font-size: 1.8rem !important;
+  }
+  
+  .lead {
+    font-size: 1rem !important;
+  }
+  
+  /* Padding reducido en móviles */
+  .container-fluid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  /* Botones más pequeños */
+  .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Cards más compactas */
+  .card {
+    margin-bottom: 1rem;
+  }
+  
+  /* Formularios más compactos */
+  .form-control {
+    font-size: 16px; /* Evita zoom en iOS */
+  }
+}
+
+/* Tablets (576px - 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .display-4 {
+    font-size: 2.2rem !important;
+  }
+}
+
+/* Tablets grandes y laptops pequeñas (768px - 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .display-4 {
+    font-size: 2.5rem !important;
+  }
+}
+
+/* Laptops y desktops (992px+) */
+@media (min-width: 992px) {
+  .display-4 {
+    font-size: 3rem !important;
+  }
+}
+
+/* Clases utilitarias responsivas */
+.text-responsive {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+.padding-responsive {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+
+.margin-responsive {
+  margin: clamp(1rem, 3vw, 2rem) 0;
+}
+
+/* Mejoras para el navbar */
+.navbar-brand {
+  font-weight: bold;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important;
+  color: var(--github-text) !important;
+}
+
+.navbar-light {
+  background-color: var(--github-white) !important;
+  border-bottom: 1px solid var(--github-border) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--github-text-secondary) !important;
+  font-weight: 500;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: var(--github-text) !important;
+}
+
+.navbar-light .navbar-nav .nav-link.fw-bold {
+  color: var(--github-text) !important;
+}
+
+/* Formularios estilo GitHub - Tema Claro */
+.form-control {
+  background-color: var(--github-white) !important;
+  border: 1px solid var(--github-border) !important;
+  color: var(--github-text) !important;
+}
+
+.form-control:focus {
+  background-color: var(--github-white) !important;
+  border-color: var(--github-blue) !important;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.15) !important;
+  color: var(--github-text) !important;
+}
+
+.form-control::placeholder {
+  color: var(--github-text-secondary) !important;
+}
+
+.form-label {
+  color: var(--github-text) !important;
+  font-weight: 600;
+}
+
+/* Badges estilo GitHub - Tema Claro */
+.badge {
+  background-color: var(--github-bg-secondary) !important;
+  color: var(--github-text) !important;
+  border: 1px solid var(--github-border) !important;
+}
+
+.bg-success {
+  background-color: var(--github-accent) !important;
+  color: var(--github-white) !important;
+}
+
+.bg-warning {
+  background-color: var(--github-attention) !important;
+  color: var(--github-white) !important;
+}
+
+.bg-info {
+  background-color: var(--github-blue) !important;
+  color: var(--github-white) !important;
+}
+
+/* Progress bars estilo GitHub - Tema Claro */
+.progress {
+  background-color: var(--github-bg-secondary) !important;
+  border: 1px solid var(--github-border) !important;
+}
+
+.progress-bar {
+  background-color: var(--github-accent) !important;
+}
+
+.progress-bar.bg-success {
+  background-color: var(--github-accent) !important;
+}
+
+.progress-bar.bg-warning {
+  background-color: var(--github-attention) !important;
+}
+
+.progress-bar.bg-info {
+  background-color: var(--github-blue) !important;
+}
+
+/* Espaciado consistente */
+.section-padding {
+  padding: clamp(2rem, 5vw, 4rem) 0;
+}
+
+/* Cards responsivas */
+.card-responsive {
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.card-responsive:hover {
+  transform: translateY(-5px);
+}
+
+/* Imagen de perfil responsiva */
+.profile-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Contenedor de imagen centrado */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Footer responsive - Tema Claro */
+.footer-responsive {
+  margin-top: auto;
+  padding: 1rem 0;
+  background-color: var(--github-bg-secondary);
+  border-top: 1px solid var(--github-border);
+  color: var(--github-text-secondary);
+}
+
+/* Estilos específicos para tema oscuro */
+[data-theme="dark"] {
+  /* Cards en tema oscuro */
+  .card {
+    background-color: var(--github-bg-secondary) !important;
+    border-color: var(--github-border) !important;
+    color: var(--github-text) !important;
+  }
+
+  /* Navbar en tema oscuro */
+  .navbar-light {
+    background-color: var(--github-bg) !important;
+    border-bottom-color: var(--github-border) !important;
+  }
+
+  /* Buttons en tema oscuro */
+  .btn-primary {
+    background-color: var(--github-blue) !important;
+    border-color: var(--github-blue) !important;
+  }
+  
+  .btn-outline-primary {
+    color: var(--github-blue) !important;
+    border-color: var(--github-blue) !important;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: var(--github-blue) !important;
+    border-color: var(--github-blue) !important;
+  }
+
+  /* Form controls en tema oscuro */
+  .form-control {
+    background-color: var(--github-bg-secondary) !important;
+    border-color: var(--github-border) !important;
+    color: var(--github-text) !important;
+  }
+  
+  .form-control:focus {
+    background-color: var(--github-bg-secondary) !important;
+    border-color: var(--github-blue) !important;
+    color: var(--github-text) !important;
+    box-shadow: 0 0 0 0.2rem rgba(88, 166, 255, 0.25) !important;
+  }
+
+  /* Progress bars en tema oscuro */
+  .progress {
+    background-color: var(--github-bg-tertiary) !important;
+  }
+
+  /* Text colors */
+  .text-muted {
+    color: var(--github-text-secondary) !important;
+  }
+}
+
+/* Animaciones suaves */
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Theme toggle enhanced styles */
+.theme-toggle {
+  position: relative;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.theme-toggle:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.3);
+}
+
+/* Divider for theme toggle */
+.theme-toggle-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--github-border);
+  opacity: 0.6;
+}
+
+/* Enhanced icon animations */
+.theme-icon-wrapper {
+  position: relative;
+}
+
+.theme-icon-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.theme-toggle:hover .theme-icon-wrapper::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Dark theme specific enhancements */
+[data-theme="dark"] .theme-toggle {
+  background-color: rgba(240, 246, 252, 0.08) !important;
+  border-color: rgba(240, 246, 252, 0.16) !important;
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  background-color: rgba(240, 246, 252, 0.12) !important;
+  border-color: rgba(240, 246, 252, 0.24) !important;
+}
+
+[data-theme="dark"] .theme-toggle-divider {
+  background-color: rgba(240, 246, 252, 0.16);
+}
+
+/* Light theme specific enhancements */
+[data-theme="light"] .theme-toggle {
+  background-color: rgba(13, 17, 23, 0.06) !important;
+  border-color: rgba(13, 17, 23, 0.12) !important;
+}
+
+[data-theme="light"] .theme-toggle:hover {
+  background-color: rgba(13, 17, 23, 0.08) !important;
+  border-color: rgba(13, 17, 23, 0.18) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991.98px) {
+  .theme-toggle {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  
+  .theme-toggle i {
+    font-size: 16px !important;
+  }
+}
+
+/* Improved focus states for accessibility */
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--github-accent-fg);
+  outline-offset: 2px;
+}
+
+/* Smooth state transitions */
+.theme-toggle,
+.theme-toggle * {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* CTA Button enhancements */
+.btn-primary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(9, 105, 218, 0.3) !important;
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(9, 105, 218, 0.2) !important;
+}
+
+/* Dark theme button adjustments */
+[data-theme="dark"] .btn-primary:hover {
+  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3) !important;
+}
+
+[data-theme="dark"] .btn-primary:active {
+  box-shadow: 0 2px 4px rgba(88, 166, 255, 0.2) !important;
+}
+
+/* Loading state for theme switching */
+.theme-switching .theme-toggle {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.theme-switching .theme-toggle .theme-icon-wrapper {
+  animation: spin 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mejoras para accesibilidad */
+.btn:focus,
+.form-control:focus,
+.nav-link:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Ocultar elementos en móviles si es necesario */
+@media (max-width: 767.98px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Mostrar solo en móviles */
+@media (min-width: 768px) {
+  .show-mobile-only {
+    display: none !important;
+  }
+}

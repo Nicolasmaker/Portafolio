@@ -54,21 +54,11 @@ export default function AboutView() {
                       Un Poco Sobre Mí
                     </h2>
                     
-                    <p className="lead text-responsive mb-3">
-                      Mi nombre es <strong>Nicolás Pérez</strong> y soy un apasionado por la tecnología 
-                      y el desarrollo de software. Me especializo en la creación de experiencias web 
-                      completas, desde el diseño de la interfaz hasta la lógica del servidor.
-                    </p>
-                    
-                    <p className="text-responsive mb-3">
-                      Tengo experiencia trabajando con tecnologías como React, Node.js, y bases de datos 
-                      SQL y NoSQL. Me encanta aprender constantemente y enfrentar nuevos desafíos que me 
-                      permitan crecer como profesional.
-                    </p>
-                    
-                    <p className="text-responsive">
-                      Cuando no estoy programando, <strong>disfruto hacer deporte</strong>, 
-                      <strong>disfruto ver series</strong> y <strong>disfruto de aprender</strong>.
+                    <p className="lead text-responsive">
+                      ¡Hola! Soy <strong>Nicolás Pérez</strong>, estudiante de 20 años de Ingeniería Informática en Duoc UC. 
+                      Me apasiona el desarrollo de software full-stack, especialmente con tecnologías como React y Node.js. 
+                      Soy de Chile, me encanta aprender cosas nuevas y siempre estoy buscando desafíos. 
+                      En mi tiempo libre, disfruto del anime, la buena comida y el deporte.
                     </p>
                   </Col>
                 </Row>
